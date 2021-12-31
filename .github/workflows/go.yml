@@ -2,7 +2,7 @@ name: kcptun
 
 on:
   release:
-    branches: [ master ]
+    types: [published]
 
 jobs:
 
