@@ -2,9 +2,9 @@ name: kcptun
 
 on:
   push:
-    branches: [ master ]
+    branches: [ $default-branch ]
   pull_request:
-    branches: [ master ]
+    branches: [ $default-branch ]
 
 jobs:
 
@@ -22,8 +22,8 @@ jobs:
       run: DEBIAN_FRONTEND=noninteractive sudo apt-get install libc6-dev -y
       
     - name: Build kcptun-server
-      run: go build -ldflags "-s -w -linkmode=external -extldflags -static -X main.VERSION=`date -u +%Y%m%d`" -o kcptun-server github.com/xtaci/kcptun/server 
+      run: go build -ldflags "-static -s -w -linkmode=external -extldflags -X main.VERSION=`date -u +%Y%m%d`" -o kcptun-server github.com/xtaci/kcptun/server 
       
     - name: Build kcptun-client
-      run: go build -ldflags "-s -w -linkmode=external -extldflags -static -X main.VERSION=`date -u +%Y%m%d`" -o kcptun-client github.com/xtaci/kcptun/client
+      run: go build -ldflags "-static -s -w -linkmode=external -extldflags -X main.VERSION=`date -u +%Y%m%d`" -o kcptun-client github.com/xtaci/kcptun/client
 
