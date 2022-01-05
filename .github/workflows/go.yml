@@ -19,7 +19,7 @@ jobs:
         go-version: 1.17
 
     - name: Install deps
-      run: apt install libc6-dev -y
+      run: DEBIAN_FRONTEND=noninteractive sudo apt-get install libc6-dev -y
       
     - name: Build kcptun-server
       run: go build -ldflags "-s -w -linkmode=external -extldflags -static -X main.VERSION=`date -u +%Y%m%d`" -o kcptun-server github.com/xtaci/kcptun/server 
