@@ -2,9 +2,9 @@ name: kcptun
 
 on:
   push:
-    branches:
-    - main
-    - release/*
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
 
